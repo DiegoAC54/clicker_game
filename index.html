@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Connection to our css file -->
+        <link rel="stylesheet" href="styles/style.css" />
+        <!-- Game title -->
+        <title>Cosmic Clicker Game</title>
+        <style>
+            #startScreen {
+                text-align: center;
+                margin-top: 20%;
+            }
+
+            #startButton {
+                padding: 10px 20px;
+                font-size: 24px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="startScreen">
+            <!-- The start screen for the game -->
+            <h1>Welcome to Cosmic Clicker Game</h1>
+            <!-- Start Button -->
+            <button id="startButton">Start Discovering</button>
+        </div>
+        <!-- Title display -->
+        <div id="gameScreen" style="display: none">
+            <h1>Cosmic Clicker Game</h1>
+
+            <main>
+                <!-- score -->
+                <p>Suns Caught: <span id="score">0</span></p>
+                <!-- button to click -->
+                <button id="clicker">Find Suns!</button>
+                <!-- Autoclickers -->
+                <button id="spacemen" disabled>
+    Buy Spacemen - Cost: 20, Purchased: 0 </br>
+    1 Sun Discovered every 3 seconds
+                </button>
+                <button id="spaceCrew" disabled>
+    Buy Space Crew - Cost: 50, Purchased: 0 </br>
+    20 Suns Discovered every 10 seconds
+</button>
+<button id="spaceCorp" disabled>
+    Buy the Space Corporation - Cost: 100, Purchased: 0 </br>
+    50 Suns Discovered every 15 seconds
+</button>
+                </button>
+                <button id="spaceCrew" disabled>
+                    Buy Space Crew - Cost: 50, Purchased: 0 </br>
+                    20 Suns Discovered every 10 seconds
+                </button>
+                <button id="spaceCorp" disabled>
+                    Buy the Space Corporation - Cost: 100, Purchased: 0 </br>
+                    50 Suns Discovered every 15 seconds
+                </button>
+            </main>
+        </div>
+        <!-- Connecting html to javascript files -->
+        <script src="src/main.js"></script>
+        <script src="src/building.js"></script>
+        <!-- The function to enable start screen -->
+        <script>
+            document
+                .getElementById('startButton')
+                .addEventListener('click', function () {
+                    document.getElementById('startScreen').style.display =
+                        'none';
+                    document.getElementById('gameScreen').style.display =
+                        'block';
+                });
+                // JavaScript code
+document.getElementById('clicker').addEventListener('click', function() {
+    // Increase score by 1
+    var scoreElement = document.getElementById('score');
+    var score = parseInt(scoreElement.innerText);
+    score++;
+    scoreElement.innerText = score;
+});
+
+// Event listener for buying Spacemen upgrade
+document.getElementById('spacemen').addEventListener('click', function() {
+    var scoreElement = document.getElementById('score');
+    var score = parseInt(scoreElement.innerText);
+    var cost = 20;
+
+    if (score >= cost) {
+        // Deduct cost from score
+        score -= cost;
+        scoreElement.innerText = score;
+
+        // Enable button
+        var spacemenButton = document.getElementById('spacemen');
+        spacemenButton.disabled = true;
+
+        // Update purchased count on button
+        var purchased = parseInt(spacemenButton.getAttribute('data-purchased'));
+        purchased++;
+        spacemenButton.setAttribute('data-purchased', purchased);
+        spacemenButton.innerHTML = `Buy Spacemen - Cost: ${cost}, Purchased: ${purchased} </br> 1 Sun Discovered every 3 seconds`;
+    }
+});
+
+// Event listener for buying Space Crew upgrade
+document.getElementById('spaceCrew').addEventListener('click', function() {
+    var scoreElement = document.getElementById('score');
+    var score = parseInt(scoreElement.innerText);
+    var cost = 50;
+
+    if (score >= cost) {
+        // Deduct cost from score
+        score -= cost;
+        scoreElement.innerText = score;
+
+        // Enable button
+        var spaceCrewButton = document.getElementById('spaceCrew');
+        spaceCrewButton.disabled = true;
+
+        // Update purchased count on button
+        var purchased = parseInt(spaceCrewButton.getAttribute('data-purchased'));
+        purchased++;
+        spaceCrewButton.setAttribute('data-purchased', purchased);
+        spaceCrewButton.innerHTML = `Buy Space Crew - Cost: ${cost}, Purchased: ${purchased} </br> 20 Suns Discovered every 10 seconds`;
+    }
+});
+
+// Event listener for buying Space Corporation upgrade
+document.getElementById('spaceCorp').addEventListener('click', function() {
+    var scoreElement = document.getElementById('score');
+    var score = parseInt(scoreElement.innerText);
+    var cost = 100;
+
+    if (score >= cost) {
+        // Deduct the cost from the score
+        score -= cost;
+        scoreElement.innerText = score;
+
+        // Enable button
+        var spaceCorpButton = document.getElementById('spaceCorp');
+        spaceCorpButton.disabled = true;
+
+        // Update purchased count on button
+        var purchased = parseInt(spaceCorpButton.getAttribute('data-purchased'));
+        purchased++;
+        spaceCorpButton.setAttribute('data-purchased', purchased);
+        spaceCorpButton.innerHTML = `Buy the Space Corporation - Cost: ${cost}, Purchased: ${purchased} </br> 50 Suns Discovered every 15 seconds`;
+    }
+});
+        </script>
+    </body>
+</html>

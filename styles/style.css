@@ -1,0 +1,42 @@
+/* styles.css */
+body {
+    margin: 250px;
+    padding: 0px;
+    background-image: url('images/images.png');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    color: #061ef9a2; /* Title color */
+}
+
+h1 {
+    text-align: center;
+    margin-top: 100px;
+}
+
+main {
+    text-align: center;
+    margin-top: 300px;
+}
+
+/* Score text color */
+p {
+    color: #6952ff;
+}
+
+/* Button colors when affordable */
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #0429f857;
+    color: rgba(55, 8, 244, 0.671);
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+}
+
+/* Only for buttons which are disabled when you can't afford it */
+:disabled {
+    background-color: rgba(8, 24, 244, 0.589)90; /* Button Box Color */
+    color: #3606f8; /* Text Color for Buttons */
+}
